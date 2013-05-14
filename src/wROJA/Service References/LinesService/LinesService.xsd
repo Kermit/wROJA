@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:8080/LinesService?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/wROJAServer.domain" />
+  <xs:element name="GetAllLines">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllLinesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/wROJAServer.domain" minOccurs="0" name="GetAllLinesResult" nillable="true" type="q1:ArrayOfLine" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetStopsForLine">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="lineID" type="xs:int" />
+        <xs:element minOccurs="0" name="routeID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetStopsForLineResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/wROJAServer.domain" minOccurs="0" name="GetStopsForLineResult" nillable="true" type="q2:ArrayOfStop" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTimetableForStop">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="routeDetailsID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTimetableForStopResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/wROJAServer.domain" minOccurs="0" name="GetTimetableForStopResult" nillable="true" type="q3:ArrayOfTimetable" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,16 +1,79 @@
 ﻿<Window x:Class="wROJA.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="350" Width="450" Margin="0,0,0,0" Padding="5" UseLayoutRounding="False">
+        Title="wRoJa" Height="390" Width="725" Margin="0,0,0,0" Padding="5" UseLayoutRounding="False" Background="#FFE5E5E5">
+
+    <!-- Wygląd pierwszej listy dla linii -->
+    <Window.Resources>
+        <DataTemplate x:Key="linesMainBoxTemplate">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock FontWeight="Bold" Text="{Binding Number}" Margin="5,0,10,0"/>
+                <TextBlock FontWeight="Bold" Text=" - " />
+                <TextBlock FontWeight="Bold" Text="{Binding WayName}" />
+            </StackPanel>
+        </DataTemplate>
+
+        <!-- Wygląd pierwszej listy dla przystanków na danej linii -->
+        <DataTemplate x:Key="stopsForLineBoxTemplate">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock FontWeight="Bold" Text="{Binding Name}" Margin="5,0,10,0"/>
+                <TextBlock FontWeight="Bold" Text=" (" />
+                <TextBlock FontWeight="Bold" Text="{Binding CommuneID}" />
+                <TextBlock FontWeight="Bold" Text=" )" />
+            </StackPanel>
+        </DataTemplate>
+        
+        <!-- Wygląd listy przystanków w "Przystanki"-->
+        <DataTemplate x:Key="stopsMainBoxTemplate">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock FontWeight="Bold" Text="{Binding Name}" Margin="5,0,10,0"/>
+                <TextBlock FontWeight="Bold" Text=" (" />
+                <TextBlock FontWeight="Bold" Text="{Binding CommuneName}" />
+                <TextBlock FontWeight="Bold" Text=")" />
+            </StackPanel>
+        </DataTemplate>
+    </Window.Resources>
+
     <DockPanel>
-        <Button Content="Button" DockPanel.Dock="Bottom" Margin="10,5,10,10" Padding="1" Grid.IsSharedSizeScope="True"/>
-        <TabControl Margin="10,10,10,0">
-            <TabItem Header="TabItem">
-                <Grid Background="#FFE5E5E5"/>
+        <Button x:Name="CloseButton" Content="Zamknij" DockPanel.Dock="Bottom" HorizontalAlignment="Right" Margin="0,5,5,5" />
+        <TabControl x:Name="MainTabControl" Margin="5,5,5,0" Padding="0">
+            <TabItem x:Name="LinesTabItem" Header="Linie">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <ListBox x:Name="LinesListBox" ItemTemplate="{StaticResource linesMainBoxTemplate}" Margin="10,5,5,5"/>
+                    <ListBox x:Name="StopsForLineListBox" ItemTemplate="{StaticResource stopsForLineBoxTemplate}" Margin="0,5,5,5" Grid.Column="1"/>
+                    <RichTextBox x:Name="TimetableLineTextBox" Grid.Column="2" Margin="0,5,10,5">
+                        <FlowDocument>
+                            <Paragraph>
+                                <Run Text="RichTextBox"/>
+                            </Paragraph>
+                        </FlowDocument>
+                    </RichTextBox>
+                </Grid>
             </TabItem>
-            <TabItem Header="TabItem">
-                <Grid Background="#FFE5E5E5"/>
+            <TabItem x:Name="StopsTabItem" Header="Przystanki">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <ListBox x:Name="StopsListBox" ItemTemplate="{StaticResource stopsMainBoxTemplate}" Margin="10,5,5,5"/>
+                    <ListBox x:Name="LinesForStopListBox" ItemTemplate="{StaticResource stopsForLineBoxTemplate}" Margin="0,5,5,5" Grid.Column="1"/>
+                    <RichTextBox x:Name="TimetableStopTextBox" Grid.Column="2" Margin="0,5,10,5">
+                        <FlowDocument>
+                            <Paragraph>
+                                <Run Text="RichTextBox"/>
+                            </Paragraph>
+                        </FlowDocument>
+                    </RichTextBox>
+                </Grid>
             </TabItem>
+            
         </TabControl>
-    </DockPanel>
+    </DockPanel>       
 </Window>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="LinesService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:8080/LinesService?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:8080/LinesService?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:8080/LinesService?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/wROJAServer.domain" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ILinesService_GetAllLines_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllLines" />
+  </wsdl:message>
+  <wsdl:message name="ILinesService_GetAllLines_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllLinesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILinesService_GetStopsForLine_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetStopsForLine" />
+  </wsdl:message>
+  <wsdl:message name="ILinesService_GetStopsForLine_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetStopsForLineResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILinesService_GetTimetableForStop_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTimetableForStop" />
+  </wsdl:message>
+  <wsdl:message name="ILinesService_GetTimetableForStop_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTimetableForStopResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ILinesService">
+    <wsdl:operation name="GetAllLines">
+      <wsdl:input wsam:Action="http://tempuri.org/ILinesService/GetAllLines" message="tns:ILinesService_GetAllLines_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/ILinesService/GetAllLinesResponse" message="tns:ILinesService_GetAllLines_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStopsForLine">
+      <wsdl:input wsam:Action="http://tempuri.org/ILinesService/GetStopsForLine" message="tns:ILinesService_GetStopsForLine_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/ILinesService/GetStopsForLineResponse" message="tns:ILinesService_GetStopsForLine_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTimetableForStop">
+      <wsdl:input wsam:Action="http://tempuri.org/ILinesService/GetTimetableForStop" message="tns:ILinesService_GetTimetableForStop_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/ILinesService/GetTimetableForStopResponse" message="tns:ILinesService_GetTimetableForStop_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_ILinesService" type="tns:ILinesService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetAllLines">
+      <soap:operation soapAction="http://tempuri.org/ILinesService/GetAllLines" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStopsForLine">
+      <soap:operation soapAction="http://tempuri.org/ILinesService/GetStopsForLine" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTimetableForStop">
+      <soap:operation soapAction="http://tempuri.org/ILinesService/GetTimetableForStop" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="LinesService">
+    <wsdl:port name="BasicHttpBinding_ILinesService" binding="tns:BasicHttpBinding_ILinesService">
+      <soap:address location="http://localhost:8080/LinesService" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

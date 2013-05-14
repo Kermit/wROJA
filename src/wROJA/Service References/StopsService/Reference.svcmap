@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="9fb5af5b-0d9e-40be-b9d9-92776e8aa7a7" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:8080/StopsService" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="StopsService.xsd" MetadataType="Schema" ID="f04b1dd8-a0af-474d-a848-9d279860c0fb" SourceId="1" SourceUrl="http://localhost:8080/StopsService?xsd=xsd1" />
+    <MetadataFile FileName="StopsService1.xsd" MetadataType="Schema" ID="41633fa5-a1a1-4a21-8a78-7ec0d5f4aaea" SourceId="1" SourceUrl="http://localhost:8080/StopsService?xsd=xsd0" />
+    <MetadataFile FileName="StopsService.wsdl" MetadataType="Wsdl" ID="0a145f98-45e7-4a34-b4d6-3f4ec7405fcb" SourceId="1" SourceUrl="http://localhost:8080/StopsService?wsdl" />
+    <MetadataFile FileName="StopsService2.xsd" MetadataType="Schema" ID="5f6191c2-4a54-4310-ae11-c7b40ad0139e" SourceId="1" SourceUrl="http://localhost:8080/StopsService?xsd=xsd2" />
+    <MetadataFile FileName="StopsService.disco" MetadataType="Disco" ID="054349be-057c-402b-9ec3-ce4c1a347759" SourceId="1" SourceUrl="http://localhost:8080/StopsService?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
