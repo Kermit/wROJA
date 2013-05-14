@@ -15,10 +15,9 @@ namespace wROJAServer
         {
             Server server = Server.getInstance();
 
-            server.ConnectToDatabase();
-            server.StartAllServices();
+            server.StartUp();
             Console.ReadLine();
-            server.StopAllServices();
+            server.CleanUp();
         }
     }
 }

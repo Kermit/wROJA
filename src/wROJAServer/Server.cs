@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Common;
+using System.Data.SQLite;
 using System.Linq;
 using System.ServiceModel;
 using System.ServiceModel.Description;
@@ -14,8 +15,9 @@ namespace wROJAServer
     public class Server
     {
         // Połączenie z bazą
-        public DbConnection databaseConnection {get; private set;}
+        public SQLiteConnection databaseConnection { get; private set; }
         ServiceHost linesServiceHost;
+        ServiceHost stopsServiceHost;
 
         private static Server instance = null;
 
@@ -31,30 +33,50 @@ namespace wROJAServer
             return instance;
         }
 
-        public void ConnectToDatabase()
-        {
-            DbProviderFactory fact = DbProviderFactories.GetFactory("System.Data.SQLite");
-            databaseConnection = fact.CreateConnection();
-            databaseConnection.ConnectionString = "Data Source=test.db3";
+        private void ConnectToDatabase()
+        {            
+            databaseConnection = new SQLiteConnection(@"Data Source=resources/RojaDatabase.db.sqlite");
             databaseConnection.Open();                                        
         }
 
-        public void StartAllServices()
+        private void StartAllServices()
         {
             ServiceMetadataBehavior smb = new ServiceMetadataBehavior();
             smb.HttpGetEnabled = true;
             smb.MetadataExporter.PolicyVersion = PolicyVersion.Policy15;
 
             Uri linesServiceAddress = new Uri("http://localhost:8080/LinesService");
-
             linesServiceHost = new ServiceHost(typeof(LinesService), linesServiceAddress);
             linesServiceHost.Description.Behaviors.Add(smb);
             linesServiceHost.Open();
+
+            Uri stopsServiceAddress = new Uri("http://localhost:8080/StopsService");
+            stopsServiceHost = new ServiceHost(typeof(StopsService), stopsServiceAddress);
+            stopsServiceHost.Description.Behaviors.Add(smb);
+            stopsServiceHost.Open();
         }
 
-        public void StopAllServices()
+        private void StopAllServices()
         {
             linesServiceHost.Close();
+            stopsServiceHost.Close();
+        }
+
+        private void DisconnectFromDatabase()
+        {
+            databaseConnection.Close();
+        }
+
+
+        public void StartUp()
+        {
+            ConnectToDatabase();
+            StartAllServices();
+        }
+
+        public void CleanUp()
+        {
+            StopAllServices();
         }
     }
 }
