@@ -18,6 +18,7 @@ namespace wROJAServer
         public SQLiteConnection databaseConnection { get; private set; }
         ServiceHost linesServiceHost;
         ServiceHost stopsServiceHost;
+        ServiceHost searchServiceHost;
 
         private static Server instance = null;
 
@@ -41,25 +42,36 @@ namespace wROJAServer
 
         private void StartAllServices()
         {
-            ServiceMetadataBehavior smb = new ServiceMetadataBehavior();
-            smb.HttpGetEnabled = true;
-            smb.MetadataExporter.PolicyVersion = PolicyVersion.Policy15;
-
+            ServiceMetadataBehavior linesServiceSMB = new ServiceMetadataBehavior();
+            linesServiceSMB.HttpGetEnabled = true;
+            linesServiceSMB.MetadataExporter.PolicyVersion = PolicyVersion.Policy15;
             Uri linesServiceAddress = new Uri("http://localhost:8080/LinesService");
             linesServiceHost = new ServiceHost(typeof(LinesService), linesServiceAddress);
-            linesServiceHost.Description.Behaviors.Add(smb);
+            linesServiceHost.Description.Behaviors.Add(linesServiceSMB);
             linesServiceHost.Open();
 
+            ServiceMetadataBehavior stopsServiceSMB = new ServiceMetadataBehavior();
+            stopsServiceSMB.HttpGetEnabled = true;
+            stopsServiceSMB.MetadataExporter.PolicyVersion = PolicyVersion.Policy15;
             Uri stopsServiceAddress = new Uri("http://localhost:8080/StopsService");
             stopsServiceHost = new ServiceHost(typeof(StopsService), stopsServiceAddress);
-            stopsServiceHost.Description.Behaviors.Add(smb);
+            stopsServiceHost.Description.Behaviors.Add(stopsServiceSMB);
             stopsServiceHost.Open();
+
+            ServiceMetadataBehavior searchServiceSMB = new ServiceMetadataBehavior();
+            searchServiceSMB.HttpGetEnabled = true;
+            searchServiceSMB.MetadataExporter.PolicyVersion = PolicyVersion.Policy15;
+            Uri searchServiceAddress = new Uri("http://localhost:8080/SearchService");
+            searchServiceHost = new ServiceHost(typeof(SearchService), searchServiceAddress);
+            searchServiceHost.Description.Behaviors.Add(searchServiceSMB);
+            searchServiceHost.Open();
         }
 
         private void StopAllServices()
         {
             linesServiceHost.Close();
             stopsServiceHost.Close();
+            searchServiceHost.Close();
         }
 
         private void DisconnectFromDatabase()
