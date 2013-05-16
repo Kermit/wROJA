@@ -18,6 +18,6 @@ namespace wROJAServer.services
         List<wROJAServer.domain.Stop> GetStopsForLine(int lineID, int routeID);
 
         [OperationContract]
-        List<wROJAServer.domain.Timetable> GetTimetableForStop(int routeDetailsID);
+        List<wROJAServer.domain.Timetable> GetTimetable(int routeDetailsID);
     }
 }

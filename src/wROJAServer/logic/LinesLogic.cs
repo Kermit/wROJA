@@ -65,28 +65,6 @@ namespace wROJAServer.logic
 
                 return result;
             }
-        }
-
-        public List<Timetable> GetTimetableForStop(int routeDetailsID)
-        {
-            using (SQLiteTransaction transaction = databaseConnection.BeginTransaction())
-            {
-                SQLiteCommand query = new SQLiteCommand(String.Format(GetTimetableForStopString, routeDetailsID), databaseConnection);
-                SQLiteDataReader reader = query.ExecuteReader();
-
-                List<Timetable> result = new List<Timetable>();
-
-                while (reader.Read())
-                {
-                    object lastField = reader.GetValue(2);
-                    result.Add(new Timetable(reader.GetString(0), reader.GetString(1), reader.GetValue(2).GetType() == typeof(System.DBNull) ? "" : reader.GetString(2)));
-                }
-
-                reader.Dispose();
-                transaction.Commit();
-
-                return result;
-            }
-        }
+        }       
     }
 }

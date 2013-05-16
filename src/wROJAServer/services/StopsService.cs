@@ -16,5 +16,15 @@ namespace wROJAServer.services
         {
             return logic.GetAllStops();
         }
+
+        public List<Line> GetLinesForStop(int stopID)
+        {
+            return logic.GetLinesForStop(stopID);
+        }
+
+        public List<Timetable> GetTimetable(int routeDetailsID)
+        {
+            return logic.GetTimetable(routeDetailsID);
+        }
     }
 }

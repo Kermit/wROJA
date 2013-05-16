@@ -12,5 +12,11 @@ namespace wROJAServer.services
     {
         [OperationContract]
         List<wROJAServer.domain.Stop> GetAllStops();
+
+        [OperationContract]
+        List<wROJAServer.domain.Line> GetLinesForStop(int stopID);
+
+        [OperationContract]
+        List<wROJAServer.domain.Timetable> GetTimetable(int routeDetailsID);
     }
 }

@@ -22,9 +22,9 @@ namespace wROJAServer.services
             return logic.GetStopsForLine(lineID, routeID);
         }
 
-        public List<Timetable> GetTimetableForStop(int routeDetailsID)
+        public List<Timetable> GetTimetable(int routeDetailsID)
         {
-            return logic.GetTimetableForStop(routeDetailsID);
+            return logic.GetTimetable(routeDetailsID);
         }
     }
 }

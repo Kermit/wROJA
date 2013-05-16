@@ -44,19 +44,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="domain\DataContract.cs" />
     <Compile Include="domain\Line.cs" />
+    <Compile Include="domain\RouteOptions.cs" />
     <Compile Include="domain\Stop.cs" />
     <Compile Include="domain\Timetable.cs" />
     <Compile Include="logic\LinesLogic.cs" />
     <Compile Include="logic\AbstractLogic.cs" />
+    <Compile Include="logic\SearchLogic.cs" />
     <Compile Include="logic\StopsLogic.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Server.cs" />
     <Compile Include="services\ILinesService.cs" />
+    <Compile Include="services\ISearchService.cs" />
     <Compile Include="services\IStopsService.cs" />
     <Compile Include="services\LinesService.cs" />
+    <Compile Include="services\SearchService.cs" />
     <Compile Include="services\StopsService.cs" />
   </ItemGroup>
   <ItemGroup>
