@@ -13,4 +13,32 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetLinesForStop">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="stopID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetLinesForStopResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/wROJAServer.domain" minOccurs="0" name="GetLinesForStopResult" nillable="true" type="q2:ArrayOfLine" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTimetable">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="routeDetailsID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTimetableResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/wROJAServer.domain" minOccurs="0" name="GetTimetableResult" nillable="true" type="q3:ArrayOfTimetable" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

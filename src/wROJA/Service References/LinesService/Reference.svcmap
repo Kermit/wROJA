@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="0697bf7d-819e-439d-b73e-0c5bb85deeb7" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="5a0d3cc9-f987-47b3-aa38-ee29d5f06b31" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -22,11 +22,11 @@
     <MetadataSource Address="http://localhost:8080/LinesService" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="LinesService.disco" MetadataType="Disco" ID="927f91b0-ce87-4238-b508-db32d1c9d1c6" SourceId="1" SourceUrl="http://localhost:8080/LinesService?disco" />
-    <MetadataFile FileName="LinesService.xsd" MetadataType="Schema" ID="fdac1b14-fd83-4079-8b88-707d51784b4b" SourceId="1" SourceUrl="http://localhost:8080/LinesService?xsd=xsd0" />
-    <MetadataFile FileName="LinesService1.xsd" MetadataType="Schema" ID="90b8762b-f1ec-4288-8890-1fa4343737d0" SourceId="1" SourceUrl="http://localhost:8080/LinesService?xsd=xsd2" />
-    <MetadataFile FileName="LinesService2.xsd" MetadataType="Schema" ID="cc1bb243-161d-40cd-8b7a-576693d94d59" SourceId="1" SourceUrl="http://localhost:8080/LinesService?xsd=xsd1" />
-    <MetadataFile FileName="LinesService.wsdl" MetadataType="Wsdl" ID="daf56314-6491-4085-acc5-bc7f4ea26985" SourceId="1" SourceUrl="http://localhost:8080/LinesService?wsdl" />
+    <MetadataFile FileName="LinesService.disco" MetadataType="Disco" ID="e2952bdb-8bdc-4990-a58c-7f3f7be2e7a5" SourceId="1" SourceUrl="http://localhost:8080/LinesService?disco" />
+    <MetadataFile FileName="LinesService.xsd" MetadataType="Schema" ID="40bfd9ac-4751-49c8-8c6e-2d1cd9ea6224" SourceId="1" SourceUrl="http://localhost:8080/LinesService?xsd=xsd0" />
+    <MetadataFile FileName="LinesService1.xsd" MetadataType="Schema" ID="639d45d4-6dac-40e8-a0cd-9cf05df93b21" SourceId="1" SourceUrl="http://localhost:8080/LinesService?xsd=xsd2" />
+    <MetadataFile FileName="LinesService2.xsd" MetadataType="Schema" ID="07942b3d-05df-422f-8157-07c64e334ccd" SourceId="1" SourceUrl="http://localhost:8080/LinesService?xsd=xsd1" />
+    <MetadataFile FileName="LinesService.wsdl" MetadataType="Wsdl" ID="782db0b7-5046-410f-90dc-6f15114d0978" SourceId="1" SourceUrl="http://localhost:8080/LinesService?wsdl" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

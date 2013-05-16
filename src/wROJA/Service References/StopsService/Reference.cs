@@ -122,6 +122,176 @@ namespace wROJA.StopsService {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Line", Namespace="http://schemas.datacontract.org/2004/07/wROJAServer.domain")]
+    [System.SerializableAttribute()]
+    public partial class Line : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NumberField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int RouteIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string WayNameField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ID {
+            get {
+                return this.IDField;
+            }
+            set {
+                if ((this.IDField.Equals(value) != true)) {
+                    this.IDField = value;
+                    this.RaisePropertyChanged("ID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Number {
+            get {
+                return this.NumberField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NumberField, value) != true)) {
+                    this.NumberField = value;
+                    this.RaisePropertyChanged("Number");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int RouteID {
+            get {
+                return this.RouteIDField;
+            }
+            set {
+                if ((this.RouteIDField.Equals(value) != true)) {
+                    this.RouteIDField = value;
+                    this.RaisePropertyChanged("RouteID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string WayName {
+            get {
+                return this.WayNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.WayNameField, value) != true)) {
+                    this.WayNameField = value;
+                    this.RaisePropertyChanged("WayName");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Timetable", Namespace="http://schemas.datacontract.org/2004/07/wROJAServer.domain")]
+    [System.SerializableAttribute()]
+    public partial class Timetable : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DayNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string LegendField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TableField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string DayName {
+            get {
+                return this.DayNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DayNameField, value) != true)) {
+                    this.DayNameField = value;
+                    this.RaisePropertyChanged("DayName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Legend {
+            get {
+                return this.LegendField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.LegendField, value) != true)) {
+                    this.LegendField = value;
+                    this.RaisePropertyChanged("Legend");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Table {
+            get {
+                return this.TableField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TableField, value) != true)) {
+                    this.TableField = value;
+                    this.RaisePropertyChanged("Table");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="StopsService.IStopsService")]
     public interface IStopsService {
@@ -131,6 +301,18 @@ namespace wROJA.StopsService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStopsService/GetAllStops", ReplyAction="http://tempuri.org/IStopsService/GetAllStopsResponse")]
         System.Threading.Tasks.Task<wROJA.StopsService.Stop[]> GetAllStopsAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStopsService/GetLinesForStop", ReplyAction="http://tempuri.org/IStopsService/GetLinesForStopResponse")]
+        wROJA.StopsService.Line[] GetLinesForStop(int stopID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStopsService/GetLinesForStop", ReplyAction="http://tempuri.org/IStopsService/GetLinesForStopResponse")]
+        System.Threading.Tasks.Task<wROJA.StopsService.Line[]> GetLinesForStopAsync(int stopID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStopsService/GetTimetable", ReplyAction="http://tempuri.org/IStopsService/GetTimetableResponse")]
+        wROJA.StopsService.Timetable[] GetTimetable(int routeDetailsID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStopsService/GetTimetable", ReplyAction="http://tempuri.org/IStopsService/GetTimetableResponse")]
+        System.Threading.Tasks.Task<wROJA.StopsService.Timetable[]> GetTimetableAsync(int routeDetailsID);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -166,6 +348,22 @@ namespace wROJA.StopsService {
         
         public System.Threading.Tasks.Task<wROJA.StopsService.Stop[]> GetAllStopsAsync() {
             return base.Channel.GetAllStopsAsync();
+        }
+        
+        public wROJA.StopsService.Line[] GetLinesForStop(int stopID) {
+            return base.Channel.GetLinesForStop(stopID);
+        }
+        
+        public System.Threading.Tasks.Task<wROJA.StopsService.Line[]> GetLinesForStopAsync(int stopID) {
+            return base.Channel.GetLinesForStopAsync(stopID);
+        }
+        
+        public wROJA.StopsService.Timetable[] GetTimetable(int routeDetailsID) {
+            return base.Channel.GetTimetable(routeDetailsID);
+        }
+        
+        public System.Threading.Tasks.Task<wROJA.StopsService.Timetable[]> GetTimetableAsync(int routeDetailsID) {
+            return base.Channel.GetTimetableAsync(routeDetailsID);
         }
     }
 }

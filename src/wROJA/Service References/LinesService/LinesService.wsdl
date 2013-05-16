@@ -19,11 +19,11 @@
   <wsdl:message name="ILinesService_GetStopsForLine_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetStopsForLineResponse" />
   </wsdl:message>
-  <wsdl:message name="ILinesService_GetTimetableForStop_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetTimetableForStop" />
+  <wsdl:message name="ILinesService_GetTimetable_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTimetable" />
   </wsdl:message>
-  <wsdl:message name="ILinesService_GetTimetableForStop_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetTimetableForStopResponse" />
+  <wsdl:message name="ILinesService_GetTimetable_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTimetableResponse" />
   </wsdl:message>
   <wsdl:portType name="ILinesService">
     <wsdl:operation name="GetAllLines">
@@ -34,9 +34,9 @@
       <wsdl:input wsam:Action="http://tempuri.org/ILinesService/GetStopsForLine" message="tns:ILinesService_GetStopsForLine_InputMessage" />
       <wsdl:output wsam:Action="http://tempuri.org/ILinesService/GetStopsForLineResponse" message="tns:ILinesService_GetStopsForLine_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetTimetableForStop">
-      <wsdl:input wsam:Action="http://tempuri.org/ILinesService/GetTimetableForStop" message="tns:ILinesService_GetTimetableForStop_InputMessage" />
-      <wsdl:output wsam:Action="http://tempuri.org/ILinesService/GetTimetableForStopResponse" message="tns:ILinesService_GetTimetableForStop_OutputMessage" />
+    <wsdl:operation name="GetTimetable">
+      <wsdl:input wsam:Action="http://tempuri.org/ILinesService/GetTimetable" message="tns:ILinesService_GetTimetable_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/ILinesService/GetTimetableResponse" message="tns:ILinesService_GetTimetable_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_ILinesService" type="tns:ILinesService">
@@ -59,8 +59,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetTimetableForStop">
-      <soap:operation soapAction="http://tempuri.org/ILinesService/GetTimetableForStop" style="document" />
+    <wsdl:operation name="GetTimetable">
+      <soap:operation soapAction="http://tempuri.org/ILinesService/GetTimetable" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

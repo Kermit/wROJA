@@ -13,16 +13,54 @@
   <wsdl:message name="IStopsService_GetAllStops_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetAllStopsResponse" />
   </wsdl:message>
+  <wsdl:message name="IStopsService_GetLinesForStop_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetLinesForStop" />
+  </wsdl:message>
+  <wsdl:message name="IStopsService_GetLinesForStop_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetLinesForStopResponse" />
+  </wsdl:message>
+  <wsdl:message name="IStopsService_GetTimetable_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTimetable" />
+  </wsdl:message>
+  <wsdl:message name="IStopsService_GetTimetable_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTimetableResponse" />
+  </wsdl:message>
   <wsdl:portType name="IStopsService">
     <wsdl:operation name="GetAllStops">
       <wsdl:input wsam:Action="http://tempuri.org/IStopsService/GetAllStops" message="tns:IStopsService_GetAllStops_InputMessage" />
       <wsdl:output wsam:Action="http://tempuri.org/IStopsService/GetAllStopsResponse" message="tns:IStopsService_GetAllStops_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLinesForStop">
+      <wsdl:input wsam:Action="http://tempuri.org/IStopsService/GetLinesForStop" message="tns:IStopsService_GetLinesForStop_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IStopsService/GetLinesForStopResponse" message="tns:IStopsService_GetLinesForStop_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTimetable">
+      <wsdl:input wsam:Action="http://tempuri.org/IStopsService/GetTimetable" message="tns:IStopsService_GetTimetable_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IStopsService/GetTimetableResponse" message="tns:IStopsService_GetTimetable_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IStopsService" type="tns:IStopsService">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="GetAllStops">
       <soap:operation soapAction="http://tempuri.org/IStopsService/GetAllStops" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLinesForStop">
+      <soap:operation soapAction="http://tempuri.org/IStopsService/GetLinesForStop" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTimetable">
+      <soap:operation soapAction="http://tempuri.org/IStopsService/GetTimetable" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

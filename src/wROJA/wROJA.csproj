@@ -62,7 +62,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="logic\AbtractLogic.cs" />
+    <Compile Include="logic\LinesLogic.cs" />
+    <Compile Include="logic\StopsLogic.cs" />
     <Compile Include="Service References\LinesService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\SearchService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -72,6 +80,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="shared\TimetableDTO.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -127,6 +136,19 @@
     <None Include="Service References\LinesService\wROJA.LinesService.Timetable.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\SearchService\SearchService.wsdl" />
+    <None Include="Service References\SearchService\SearchService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SearchService\SearchService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SearchService\SearchService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SearchService\wROJA.SearchService.RouteOptions.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\StopsService\StopsService.wsdl" />
     <None Include="Service References\StopsService\StopsService.xsd">
       <SubType>Designer</SubType>
@@ -137,7 +159,13 @@
     <None Include="Service References\StopsService\StopsService2.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\StopsService\wROJA.StopsService.Line.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\StopsService\wROJA.StopsService.Stop.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\StopsService\wROJA.StopsService.Timetable.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
   </ItemGroup>
@@ -149,6 +177,7 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\LinesService\" />
+    <WCFMetadataStorage Include="Service References\SearchService\" />
     <WCFMetadataStorage Include="Service References\StopsService\" />
   </ItemGroup>
   <ItemGroup>
@@ -162,6 +191,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\LinesService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SearchService\SearchService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SearchService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SearchService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SearchService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

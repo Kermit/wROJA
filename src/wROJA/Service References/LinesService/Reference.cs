@@ -308,11 +308,11 @@ namespace wROJA.LinesService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILinesService/GetStopsForLine", ReplyAction="http://tempuri.org/ILinesService/GetStopsForLineResponse")]
         System.Threading.Tasks.Task<wROJA.LinesService.Stop[]> GetStopsForLineAsync(int lineID, int routeID);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILinesService/GetTimetableForStop", ReplyAction="http://tempuri.org/ILinesService/GetTimetableForStopResponse")]
-        wROJA.LinesService.Timetable[] GetTimetableForStop(int routeDetailsID);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILinesService/GetTimetable", ReplyAction="http://tempuri.org/ILinesService/GetTimetableResponse")]
+        wROJA.LinesService.Timetable[] GetTimetable(int routeDetailsID);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILinesService/GetTimetableForStop", ReplyAction="http://tempuri.org/ILinesService/GetTimetableForStopResponse")]
-        System.Threading.Tasks.Task<wROJA.LinesService.Timetable[]> GetTimetableForStopAsync(int routeDetailsID);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILinesService/GetTimetable", ReplyAction="http://tempuri.org/ILinesService/GetTimetableResponse")]
+        System.Threading.Tasks.Task<wROJA.LinesService.Timetable[]> GetTimetableAsync(int routeDetailsID);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -358,12 +358,12 @@ namespace wROJA.LinesService {
             return base.Channel.GetStopsForLineAsync(lineID, routeID);
         }
         
-        public wROJA.LinesService.Timetable[] GetTimetableForStop(int routeDetailsID) {
-            return base.Channel.GetTimetableForStop(routeDetailsID);
+        public wROJA.LinesService.Timetable[] GetTimetable(int routeDetailsID) {
+            return base.Channel.GetTimetable(routeDetailsID);
         }
         
-        public System.Threading.Tasks.Task<wROJA.LinesService.Timetable[]> GetTimetableForStopAsync(int routeDetailsID) {
-            return base.Channel.GetTimetableForStopAsync(routeDetailsID);
+        public System.Threading.Tasks.Task<wROJA.LinesService.Timetable[]> GetTimetableAsync(int routeDetailsID) {
+            return base.Channel.GetTimetableAsync(routeDetailsID);
         }
     }
 }

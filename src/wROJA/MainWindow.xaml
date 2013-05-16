@@ -13,16 +13,6 @@
             </StackPanel>
         </DataTemplate>
 
-        <!-- Wygląd pierwszej listy dla przystanków na danej linii -->
-        <DataTemplate x:Key="stopsForLineBoxTemplate">
-            <StackPanel Orientation="Horizontal">
-                <TextBlock FontWeight="Bold" Text="{Binding Name}" Margin="5,0,10,0"/>
-                <TextBlock FontWeight="Bold" Text=" (" />
-                <TextBlock FontWeight="Bold" Text="{Binding CommuneID}" />
-                <TextBlock FontWeight="Bold" Text=" )" />
-            </StackPanel>
-        </DataTemplate>
-        
         <!-- Wygląd listy przystanków w "Przystanki"-->
         <DataTemplate x:Key="stopsMainBoxTemplate">
             <StackPanel Orientation="Horizontal">
@@ -30,6 +20,25 @@
                 <TextBlock FontWeight="Bold" Text=" (" />
                 <TextBlock FontWeight="Bold" Text="{Binding CommuneName}" />
                 <TextBlock FontWeight="Bold" Text=")" />
+            </StackPanel>
+        </DataTemplate>
+
+        <!-- Wygląd listy przystanków w "Linie"-->
+        <DataTemplate x:Key="stopsForLinesTemplate">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock FontWeight="Bold" Text="{Binding Name}" Margin="5,0,10,0"/>
+                <TextBlock FontWeight="Bold" Text=" (" />
+                <TextBlock FontWeight="Bold" Text="{Binding CommuneID}" />
+                <TextBlock FontWeight="Bold" Text=")" />
+            </StackPanel>
+        </DataTemplate>
+
+        <!-- Wygląd pierwszej listy dla przystanków na danej linii -->
+        <DataTemplate x:Key="linesForStopsTemplate">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock FontWeight="Bold" Text="{Binding Number}" Margin="5,0,10,0"/>
+                <TextBlock FontWeight="Bold" Text=" -> " />
+                <TextBlock FontWeight="Bold" Text="{Binding WayName}" />
             </StackPanel>
         </DataTemplate>
     </Window.Resources>
@@ -45,14 +54,8 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <ListBox x:Name="LinesListBox" ItemTemplate="{StaticResource linesMainBoxTemplate}" Margin="10,5,5,5"/>
-                    <ListBox x:Name="StopsForLineListBox" ItemTemplate="{StaticResource stopsForLineBoxTemplate}" Margin="0,5,5,5" Grid.Column="1"/>
-                    <RichTextBox x:Name="TimetableLineTextBox" Grid.Column="2" Margin="0,5,10,5">
-                        <FlowDocument>
-                            <Paragraph>
-                                <Run Text="RichTextBox"/>
-                            </Paragraph>
-                        </FlowDocument>
-                    </RichTextBox>
+                    <ListBox x:Name="StopsForLineListBox" ItemTemplate="{StaticResource stopsForLinesTemplate}" Margin="0,5,5,5" Grid.Column="1"/>
+                    <RichTextBox x:Name="TimetableLineTextBox" Grid.Column="2" Margin="0,5,10,5"/>
                 </Grid>
             </TabItem>
             <TabItem x:Name="StopsTabItem" Header="Przystanki">
@@ -63,17 +66,45 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <ListBox x:Name="StopsListBox" ItemTemplate="{StaticResource stopsMainBoxTemplate}" Margin="10,5,5,5"/>
-                    <ListBox x:Name="LinesForStopListBox" ItemTemplate="{StaticResource stopsForLineBoxTemplate}" Margin="0,5,5,5" Grid.Column="1"/>
-                    <RichTextBox x:Name="TimetableStopTextBox" Grid.Column="2" Margin="0,5,10,5">
-                        <FlowDocument>
-                            <Paragraph>
-                                <Run Text="RichTextBox"/>
-                            </Paragraph>
-                        </FlowDocument>
-                    </RichTextBox>
+                    <ListBox x:Name="LinesForStopListBox" ItemTemplate="{StaticResource linesForStopsTemplate}" Margin="0,5,5,5" Grid.Column="1"/>
+                    <RichTextBox x:Name="TimetableStopTextBox" Grid.Column="2" Margin="0,5,10,5"/>
                 </Grid>
             </TabItem>
-            
+            <TabItem x:Name="SearchTabItem" Header="Wyszukaj trasę">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Margin="10,5,5,5">
+                        <GroupBox Header="GroupBox">
+                            <StackPanel>
+                                <Label Content="Przystanek początkowy:" Margin="0,5,5,0" />
+                                <ComboBox Margin="5,0,5,5" IsEditable="True" />
+                                <Label Content="Przystanek końcowy:" Margin="0,0,5,0" />
+                                <ComboBox Margin="5,0,5,5" IsEditable="True" />
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Button Content="Wyczyść" Grid.Column="1" Margin="5" />
+                                    <Button Content="Szukaj" Margin="5" />
+                                </Grid>
+                            </StackPanel>
+                        </GroupBox>
+                        <TextBlock TextWrapping="WrapWithOverflow" TextAlignment="Center" FontWeight="Bold" Margin="10,5,5,5">
+                            Proszę wybrać przystanek początkowy i końcowy i wcisnąć &quot;Szukaj&quot;.
+                        </TextBlock>
+                        <TextBlock TextWrapping="WrapWithOverflow" TextAlignment="Center" FontWeight="Bold" Margin="10,5,5,4" Foreground="Red">
+                            Uwaga: obsługiwane są jedynie połączenia bezpośrednie!
+                        </TextBlock>
+                    </StackPanel>
+                    <ListBox Margin="0,5,5,5" Grid.Column="1"/>
+                    <RichTextBox Grid.Column="2" Margin="0,5,10,5"/>
+                </Grid>
+            </TabItem>
         </TabControl>
-    </DockPanel>       
+    </DockPanel>
 </Window>

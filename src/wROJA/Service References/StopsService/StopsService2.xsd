@@ -16,4 +16,33 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Stop" nillable="true" type="tns:Stop" />
+  <xs:complexType name="ArrayOfLine">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Line" nillable="true" type="tns:Line" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfLine" nillable="true" type="tns:ArrayOfLine" />
+  <xs:complexType name="Line">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Number" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RouteID" type="xs:int" />
+      <xs:element minOccurs="0" name="WayName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Line" nillable="true" type="tns:Line" />
+  <xs:complexType name="ArrayOfTimetable">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Timetable" nillable="true" type="tns:Timetable" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTimetable" nillable="true" type="tns:ArrayOfTimetable" />
+  <xs:complexType name="Timetable">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DayName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Legend" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Table" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Timetable" nillable="true" type="tns:Timetable" />
 </xs:schema>
