@@ -23,13 +23,22 @@ namespace wROJA
     {
         private LinesLogic linesLogic = new LinesLogic();
         private StopsLogic stopsLogic = new StopsLogic();
+        private SearchLogic searchLogic = new SearchLogic();
 
         public MainWindow()
         {
             InitializeComponent();
-            
-            CloseButton.Click += new System.Windows.RoutedEventHandler(this.CloseButtonClickHandler);
-            LinesTabItem.Loaded += new System.Windows.RoutedEventHandler(this.GetLinesData);
+
+            CloseButton.Click += (o, e) => { Close(); };
+
+            // Inicjalizacja podstawowych list
+            MainTabControl.Loaded += (o, e) =>
+                {
+                    LinesListBox.ItemsSource = linesLogic.GetAllLines();
+                    StopsListBox.ItemsSource = stopsLogic.GetAllStops();
+                    StartStopCB.ItemsSource = stopsLogic.GetAllStops();
+                    EndStopCB.ItemsSource = stopsLogic.GetAllStops();
+                };
 
             // Handlery dla Linii
             LinesListBox.SelectionChanged += new SelectionChangedEventHandler(this.GetStopsForLine);
@@ -56,17 +65,37 @@ namespace wROJA
                 }
             };
 
-        }
+            //Handlery dla "Wyszukiwania"
+            ClearButton.Click += (o, e) =>
+                {
+                    StartStopCB.Text = "";
+                    EndStopCB.Text = "";
+                    SearchButton.IsEnabled = false;
+                };
 
-        private void CloseButtonClickHandler(object sender, RoutedEventArgs e)
-        {
-            Close();
-        }
+            SearchButton.Click += (o, e) =>
+                {
+                    StopsService.Stop StartStop = (StopsService.Stop)StartStopCB.SelectedItem;
+                    StopsService.Stop EndStop = (StopsService.Stop)EndStopCB.SelectedItem;
 
+                    RoutesListBox.ItemsSource = searchLogic.GetRoutes(StartStop.ID, EndStop.ID);
+                };
+
+            RoutesListBox.SelectionChanged += (o, e) =>
+                {
+                    RoutesTextBox.Document.Blocks.Clear();
+
+                    object selectedItem = RoutesListBox.SelectedItem;
+                    if (selectedItem != null)
+                    {
+                        RoutesTextBox.Document.Blocks.AddRange(searchLogic.GetTimetable((SearchService.RouteOptions)selectedItem));
+                    }
+                };
+        }
+        
         private void GetLinesData(object sender, RoutedEventArgs e)
         {
-            LinesListBox.ItemsSource = linesLogic.GetAllLines();
-            StopsListBox.ItemsSource = stopsLogic.GetAllStops();
+            
             //LinesListBox.Items.Filter = new Predicate<object>(test);
         }
 

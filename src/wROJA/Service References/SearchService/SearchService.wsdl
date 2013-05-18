@@ -13,16 +13,35 @@
   <wsdl:message name="ISearchService_GetStraightRoutes_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetStraightRoutesResponse" />
   </wsdl:message>
+  <wsdl:message name="ISearchService_GetTimetable_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTimetable" />
+  </wsdl:message>
+  <wsdl:message name="ISearchService_GetTimetable_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTimetableResponse" />
+  </wsdl:message>
   <wsdl:portType name="ISearchService">
     <wsdl:operation name="GetStraightRoutes">
       <wsdl:input wsam:Action="http://tempuri.org/ISearchService/GetStraightRoutes" message="tns:ISearchService_GetStraightRoutes_InputMessage" />
       <wsdl:output wsam:Action="http://tempuri.org/ISearchService/GetStraightRoutesResponse" message="tns:ISearchService_GetStraightRoutes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTimetable">
+      <wsdl:input wsam:Action="http://tempuri.org/ISearchService/GetTimetable" message="tns:ISearchService_GetTimetable_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/ISearchService/GetTimetableResponse" message="tns:ISearchService_GetTimetable_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_ISearchService" type="tns:ISearchService">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="GetStraightRoutes">
       <soap:operation soapAction="http://tempuri.org/ISearchService/GetStraightRoutes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTimetable">
+      <soap:operation soapAction="http://tempuri.org/ISearchService/GetTimetable" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

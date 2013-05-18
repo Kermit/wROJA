@@ -81,16 +81,16 @@
                         <GroupBox Header="GroupBox">
                             <StackPanel>
                                 <Label Content="Przystanek początkowy:" Margin="0,5,5,0" />
-                                <ComboBox Margin="5,0,5,5" IsEditable="True" />
+                                <ComboBox x:Name="StartStopCB" ItemTemplate="{StaticResource stopsMainBoxTemplate}" TextSearch.TextPath="Name" Margin="5,0,5,5" StaysOpenOnEdit="True" IsEditable="True" />
                                 <Label Content="Przystanek końcowy:" Margin="0,0,5,0" />
-                                <ComboBox Margin="5,0,5,5" IsEditable="True" />
+                                <ComboBox x:Name="EndStopCB" ItemTemplate="{StaticResource stopsMainBoxTemplate}" TextSearch.TextPath="Name"  Margin="5,0,5,5" IsEditable="True" />
                                 <Grid>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
-                                    <Button Content="Wyczyść" Grid.Column="1" Margin="5" />
-                                    <Button Content="Szukaj" Margin="5" />
+                                    <Button x:Name="ClearButton" Content="Wyczyść" Grid.Column="1" Margin="5" />
+                                    <Button x:Name="SearchButton" Content="Szukaj" Margin="5" />
                                 </Grid>
                             </StackPanel>
                         </GroupBox>
@@ -101,8 +101,8 @@
                             Uwaga: obsługiwane są jedynie połączenia bezpośrednie!
                         </TextBlock>
                     </StackPanel>
-                    <ListBox Margin="0,5,5,5" Grid.Column="1"/>
-                    <RichTextBox Grid.Column="2" Margin="0,5,10,5"/>
+                    <ListBox x:Name="RoutesListBox" Margin="0,5,5,5" Grid.Column="1" DisplayMemberPath="Text" IsTabStop="True"/>
+                    <RichTextBox x:Name="RoutesTextBox" Grid.Column="2" Margin="0,5,10,5"/>
                 </Grid>
             </TabItem>
         </TabControl>

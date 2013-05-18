@@ -64,6 +64,7 @@
     </ApplicationDefinition>
     <Compile Include="logic\AbtractLogic.cs" />
     <Compile Include="logic\LinesLogic.cs" />
+    <Compile Include="logic\SearchLogic.cs" />
     <Compile Include="logic\StopsLogic.cs" />
     <Compile Include="Service References\LinesService\Reference.cs">
       <AutoGen>True</AutoGen>
@@ -149,6 +150,9 @@
     <None Include="Service References\SearchService\wROJA.SearchService.RouteOptions.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\SearchService\wROJA.SearchService.Timetable.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\StopsService\StopsService.wsdl" />
     <None Include="Service References\StopsService\StopsService.xsd">
       <SubType>Designer</SubType>
@@ -170,7 +174,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />

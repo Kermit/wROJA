@@ -13,4 +13,18 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="RouteOptions" nillable="true" type="tns:RouteOptions" />
+  <xs:complexType name="ArrayOfTimetable">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Timetable" nillable="true" type="tns:Timetable" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTimetable" nillable="true" type="tns:ArrayOfTimetable" />
+  <xs:complexType name="Timetable">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DayName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Legend" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Table" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Timetable" nillable="true" type="tns:Timetable" />
 </xs:schema>
