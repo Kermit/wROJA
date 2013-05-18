@@ -12,5 +12,8 @@ namespace wROJAServer.services
     {
         [OperationContract]
         List<wROJAServer.domain.RouteOptions> GetStraightRoutes(int startStopID, int endStopID);
+
+        [OperationContract]
+        List<wROJAServer.domain.Timetable> GetTimetable(int routeDetailsID);
     }
 }
