@@ -1,0 +1,39 @@
+﻿<Page x:Class="wROJA.StopsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" Title="StopsPage">
+    
+    <Page.Resources>
+         <!-- Wygląd listy przystanków w "Przystanki"-->
+        <DataTemplate x:Key="stopsMainBoxTemplate">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock FontWeight="Bold" Text="{Binding Name}" Margin="5,0,10,0"/>
+                <TextBlock FontWeight="Bold" Text=" (" />
+                <TextBlock FontWeight="Bold" Text="{Binding CommuneName}" />
+                <TextBlock FontWeight="Bold" Text=")" />
+            </StackPanel>
+        </DataTemplate>
+
+        <!-- Wygląd pierwszej listy dla przystanków na danej linii -->
+        <DataTemplate x:Key="linesForStopsTemplate">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock FontWeight="Bold" Text="{Binding Number}" Margin="5,0,10,0"/>
+                <TextBlock FontWeight="Bold" Text=" -> " />
+                <TextBlock FontWeight="Bold" Text="{Binding WayName}" />
+            </StackPanel>
+        </DataTemplate>
+    </Page.Resources>
+    
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <ListBox x:Name="StopsListBox" ItemTemplate="{DynamicResource stopsMainBoxTemplate}" Margin="10,5,5,5"/>
+        <ListBox x:Name="LinesForStopListBox" ItemTemplate="{DynamicResource linesForStopsTemplate}" Margin="0,5,5,5" Grid.Column="1"/>
+        <RichTextBox x:Name="TimetableStopTextBox" Grid.Column="2" Margin="0,5,10,5"/>
+    </Grid>
+</Page>

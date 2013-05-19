@@ -1,0 +1,52 @@
+﻿<Page x:Class="wROJA.SearchPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" Title="SearchPage">
+
+    <Page.Resources>
+        <DataTemplate x:Key="stopsMainBoxTemplate">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock FontWeight="Bold" Text="{Binding Name}" Margin="5,0,10,0"/>
+                <TextBlock FontWeight="Bold" Text=" (" />
+                <TextBlock FontWeight="Bold" Text="{Binding CommuneName}" />
+                <TextBlock FontWeight="Bold" Text=")" />
+            </StackPanel>
+        </DataTemplate>
+    </Page.Resources>
+    
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Margin="10,5,5,5">
+            <GroupBox Header="GroupBox">
+                <StackPanel>
+                    <Label Content="Przystanek początkowy:" Margin="0,5,5,0" />
+                    <ComboBox x:Name="StartStopCB" ItemTemplate="{DynamicResource stopsMainBoxTemplate}" TextSearch.TextPath="Name" Margin="5,0,5,5" StaysOpenOnEdit="True" IsEditable="True" />
+                    <Label Content="Przystanek końcowy:" Margin="0,0,5,0" />
+                    <ComboBox x:Name="EndStopCB" ItemTemplate="{DynamicResource stopsMainBoxTemplate}" TextSearch.TextPath="Name"  Margin="5,0,5,5" IsEditable="True" />
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Button x:Name="ClearButton" Content="Wyczyść" Grid.Column="1" Margin="5" />
+                        <Button x:Name="SearchButton" Content="Szukaj" Margin="5" />
+                    </Grid>
+                </StackPanel>
+            </GroupBox>
+            <TextBlock TextWrapping="WrapWithOverflow" TextAlignment="Center" FontWeight="Bold" Margin="10,5,5,5">
+                            Proszę wybrać przystanek początkowy i końcowy i wcisnąć &quot;Szukaj&quot;.
+            </TextBlock>
+            <TextBlock TextWrapping="WrapWithOverflow" TextAlignment="Center" FontWeight="Bold" Margin="10,5,5,4" Foreground="Red">
+                            Uwaga: obsługiwane są jedynie połączenia bezpośrednie!
+            </TextBlock>
+        </StackPanel>
+        <ListBox x:Name="RoutesListBox" Margin="0,5,5,5" Grid.Column="1" DisplayMemberPath="Text" IsTabStop="True"/>
+        <RichTextBox x:Name="RoutesTextBox" Grid.Column="2" Margin="0,5,10,5"/>
+    </Grid>
+</Page>
