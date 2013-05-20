@@ -29,13 +29,42 @@ namespace wROJA
             InitializeComponent();
 
             // Pobranie danych.
-            StartStopCB.ItemsSource = stopsLogic.GetAllStops();
-            EndStopCB.ItemsSource = stopsLogic.GetAllStops();
+            List<StopsService.Stop> stopsList = new List<StopsService.Stop>();
+            stopsList.Add(new StopsService.Stop());
+            stopsList.AddRange(stopsLogic.GetAllStops());
+
+            StartStopCB.ItemsSource = stopsList;
+            EndStopCB.ItemsSource = stopsList;
+            
+            StartStopCB.SelectedIndex = 0;
+            EndStopCB.SelectedIndex = 0;
 
             // Przypisanie handlerów.
             ClearButton.Click += ClearButtonClickHandler;
             SearchButton.Click += SearchButtonClickHandler;
             RoutesListBox.SelectionChanged += RoutesListBoxSelectionChangedHandler;
+            StartStopCB.SelectionChanged += ComboBoxSelectionChanged;
+            EndStopCB.SelectionChanged += ComboBoxSelectionChanged;
+        }
+
+        void ComboBoxSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            StopsService.Stop StartStop = (StopsService.Stop)StartStopCB.SelectedItem;
+            StopsService.Stop EndStop = (StopsService.Stop)EndStopCB.SelectedItem;
+
+            if (!string.IsNullOrEmpty(StartStop.Name) && !string.IsNullOrEmpty(EndStop.Name))
+            {
+                if (StartStop.Name == EndStop.Name)
+                {                    
+                    MessageBox.Show("Przystanek początkowy i końcowy muszą być różne.", "Błąd wyszukiwania");
+                    ((ComboBox)sender).SelectedItem = e.RemovedItems[0];
+                    SearchButton.IsEnabled = false;
+                }
+                else
+                {
+                    SearchButton.IsEnabled = true;
+                }
+            }
         }
 
         private void RoutesListBoxSelectionChangedHandler(object sender, SelectionChangedEventArgs e)
@@ -54,7 +83,16 @@ namespace wROJA
             StopsService.Stop StartStop = (StopsService.Stop)StartStopCB.SelectedItem;
             StopsService.Stop EndStop = (StopsService.Stop)EndStopCB.SelectedItem;
 
-            RoutesListBox.ItemsSource = searchLogic.GetRoutes(StartStop.ID, EndStop.ID);
+            SearchService.RouteOptions[] result = searchLogic.GetRoutes(StartStop.ID, EndStop.ID);
+
+            if (result.Length != 0)
+            {
+                RoutesListBox.ItemsSource = result;
+            }
+            else
+            {
+                MessageBox.Show("Nie znaleziono bezpośrednich połączeń", "Brak wyników");
+            }
         }
 
         private void ClearButtonClickHandler(object sender, RoutedEventArgs e)

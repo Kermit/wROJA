@@ -7,11 +7,9 @@
 
     <Page.Resources>
         <DataTemplate x:Key="stopsMainBoxTemplate">
-            <StackPanel Orientation="Horizontal">
+            <StackPanel Orientation="Vertical">
                 <TextBlock FontWeight="Bold" Text="{Binding Name}" Margin="5,0,10,0"/>
-                <TextBlock FontWeight="Bold" Text=" (" />
-                <TextBlock FontWeight="Bold" Text="{Binding CommuneName}" />
-                <TextBlock FontWeight="Bold" Text=")" />
+                <TextBlock FontWeight="Bold" Text="{Binding CommuneName}" Margin="5,0,10,0"/>
             </StackPanel>
         </DataTemplate>
     </Page.Resources>
@@ -35,7 +33,7 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <Button x:Name="ClearButton" Content="Wyczyść" Grid.Column="1" Margin="5" />
-                        <Button x:Name="SearchButton" Content="Szukaj" Margin="5" />
+                        <Button x:Name="SearchButton" Content="Szukaj" Margin="5" IsEnabled="False" />
                     </Grid>
                 </StackPanel>
             </GroupBox>
