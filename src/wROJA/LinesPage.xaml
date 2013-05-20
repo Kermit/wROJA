@@ -9,7 +9,7 @@
     <Page.Resources>
         <DataTemplate x:Key="linesMainBoxTemplate">
             <StackPanel Orientation="Horizontal">
-                <TextBlock FontWeight="Bold" Text="{Binding Number}" Margin="5,0,10,0"/>
+                <TextBlock FontWeight="Bold" Text="{Binding Number}" Margin="5,0,0,0"/>
                 <TextBlock FontWeight="Bold" Text=" - " />
                 <TextBlock FontWeight="Bold" Text="{Binding WayName}" />
             </StackPanel>
@@ -18,7 +18,7 @@
         <!-- Wygląd listy przystanków w "Linie"-->
         <DataTemplate x:Key="stopsForLinesTemplate">
             <StackPanel Orientation="Horizontal">
-                <TextBlock FontWeight="Bold" Text="{Binding Name}" Margin="5,0,10,0"/>
+                <TextBlock FontWeight="Bold" Text="{Binding Name}" Margin="5,0,0,0"/>
                 <TextBlock FontWeight="Bold" Text=" (" />
                 <TextBlock FontWeight="Bold" Text="{Binding CommuneID}" />
                 <TextBlock FontWeight="Bold" Text=")" />

@@ -13,10 +13,10 @@ namespace wROJAServer.logic
         private static string GetAllStopsString = "SELECT stops.id AS stopID, stops.name AS stopName, communes.name AS communeName FROM"
                 + " stops LEFT JOIN communes ON stops.communeID = communes.id ORDER BY stops.name";
 
-        private static string GetLinesForStopString = "SELECT lines.number AS lineNumber, routesdetails.id AS routedetailID,"
+        private static string GetLinesForStopString = @"SELECT lines.number AS lineNumber, routesdetails.id AS routedetailID,"
                         + " stops.name AS stopName FROM ((routesdetails INNER JOIN lines ON routesdetails.lineID = lines.id)"
                         + " INNER JOIN routes ON routesdetails.routeID = routes.id) INNER JOIN stops ON"
-                        + " routes.stopID = stops.id WHERE routesdetails.stopID = {0}";
+                        + " routes.stopID = stops.id WHERE routesdetails.stopID = @StopID";
 
         public StopsLogic() { }
 
@@ -45,7 +45,8 @@ namespace wROJAServer.logic
         {
             using (SQLiteTransaction transaction = databaseConnection.BeginTransaction())
             {
-                SQLiteCommand query = new SQLiteCommand(String.Format(GetLinesForStopString, stopID), databaseConnection);
+                SQLiteCommand query = new SQLiteCommand(GetLinesForStopString, databaseConnection);
+                query.Parameters.Add(new SQLiteParameter("@StopID", stopID));
                 SQLiteDataReader reader = query.ExecuteReader();
 
                 List<Line> result = new List<Line>();

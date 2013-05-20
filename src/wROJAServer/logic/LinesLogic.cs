@@ -15,10 +15,10 @@ namespace wROJAServer.logic
                 " FROM (lines LEFT JOIN routes ON lines.id = routes.lineID)" +
                 " LEFT JOIN stops ON routes.stopID = stops.id ORDER BY lines.number ASC";
 
-        private static string GetStopsForLineString = "SELECT stops.id AS stopID, stops.name AS stopName, stops.communeID AS stopCommune,"
+        private static string GetStopsForLineString = @"SELECT stops.id AS stopID, stops.name AS stopName, stops.communeID AS stopCommune,"
                         + " routesdetails.onDemand AS stopOnDemand, routesdetails.obligatory AS stopObligatory, routesdetails.id AS routeDetailsID "
-                        + " FROM routesdetails LEFT JOIN stops ON routesdetails.stopID = stops.id WHERE routesdetails.lineID = {0}" 
-                        + " AND routesdetails.routeID = {1} AND routesdetails.stopID != -1 ORDER BY routeDetailsID";
+                        + " FROM routesdetails LEFT JOIN stops ON routesdetails.stopID = stops.id WHERE routesdetails.lineID = @LineID" 
+                        + " AND routesdetails.routeID = @RouteID AND routesdetails.stopID != -1 ORDER BY routeDetailsID";
 
         private static string GetTimetableForStopString = "SELECT days.name AS dayName, times.time AS timeTable, times.legend AS timetableLegend"
                         + " FROM times LEFT JOIN days ON times.dayID = days.id WHERE times.routeDetailsID = {0}";
@@ -50,7 +50,9 @@ namespace wROJAServer.logic
         {
             using (SQLiteTransaction transaction = databaseConnection.BeginTransaction())
             {
-                SQLiteCommand query = new SQLiteCommand(String.Format(GetStopsForLineString, lineID, routeID), databaseConnection);
+                SQLiteCommand query = new SQLiteCommand(GetStopsForLineString, databaseConnection);
+                query.Parameters.Add(new SQLiteParameter("@LineID", lineID));
+                query.Parameters.Add(new SQLiteParameter("@RouteID", routeID));
                 SQLiteDataReader reader = query.ExecuteReader();
 
                 List<Stop> result = new List<Stop>();

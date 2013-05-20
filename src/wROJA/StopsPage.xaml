@@ -9,7 +9,7 @@
          <!-- Wygląd listy przystanków w "Przystanki"-->
         <DataTemplate x:Key="stopsMainBoxTemplate">
             <StackPanel Orientation="Horizontal">
-                <TextBlock FontWeight="Bold" Text="{Binding Name}" Margin="5,0,10,0"/>
+                <TextBlock FontWeight="Bold" Text="{Binding Name}" Margin="5,0,0,0"/>
                 <TextBlock FontWeight="Bold" Text=" (" />
                 <TextBlock FontWeight="Bold" Text="{Binding CommuneName}" />
                 <TextBlock FontWeight="Bold" Text=")" />
@@ -19,7 +19,7 @@
         <!-- Wygląd pierwszej listy dla przystanków na danej linii -->
         <DataTemplate x:Key="linesForStopsTemplate">
             <StackPanel Orientation="Horizontal">
-                <TextBlock FontWeight="Bold" Text="{Binding Number}" Margin="5,0,10,0"/>
+                <TextBlock FontWeight="Bold" Text="{Binding Number}" Margin="5,0,0,0"/>
                 <TextBlock FontWeight="Bold" Text=" -> " />
                 <TextBlock FontWeight="Bold" Text="{Binding WayName}" />
             </StackPanel>

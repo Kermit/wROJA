@@ -10,17 +10,17 @@ namespace wROJAServer.logic
 {
     public class SearchLogic : AbstractLogic
     {
-        private static string LinesQueryString = "SELECT id, lineID, routeID FROM routesdetails WHERE stopID = {0}";
-        private static string CRSCheckRoute = "SELECT routesdetails.id AS routedetailID,"
-                           + " stops.name AS stopName"
-                           + " FROM ((routesdetails INNER JOIN lines ON routesdetails.lineID = lines.id)"
-                           + " INNER JOIN routes ON routesdetails.routeID = routes.id) INNER JOIN stops ON"
-                           + " routes.stopID = stops.id WHERE routesdetails.stopID = {0} AND routesdetails.lineID = {1} AND"
-                           + " routesdetails.routeID = {2}";
-        private static string GetRouteDetailsIDQueryString = "SELECT id FROM routesdetails WHERE lineID = {0} AND routeID = {1} AND stopID = {2}";
-        private static string GetLineAndStopNamesQueryString = "SELECT lines.number AS lineNumber, stops.name AS stopName"
+        private static string LinesQueryString = @"SELECT id, lineID, routeID FROM routesdetails WHERE stopID = @StopID";
+        private static string GetRouteDetailsIDQueryString = @"SELECT id FROM routesdetails WHERE lineID = @LineID AND routeID = @RouteID AND stopID = @StopID";
+        private static string GetLineAndStopNamesQueryString = @"SELECT lines.number AS lineNumber, stops.name AS stopName"
                            + " FROM (routes INNER JOIN stops ON routes.stopID = stops.id) INNER JOIN"
-                           + " lines ON routes.lineID = lines.id WHERE routes.id = {0} AND routes.lineID = {1}";
+                           + " lines ON routes.lineID = lines.id WHERE routes.id = @ID AND routes.lineID = @LineID";
+        private static string CRSCheckRoute = @"SELECT routesdetails.id AS routedetailID,"
+                   + " stops.name AS stopName"
+                   + " FROM ((routesdetails INNER JOIN lines ON routesdetails.lineID = lines.id)"
+                   + " INNER JOIN routes ON routesdetails.routeID = routes.id) INNER JOIN stops ON"
+                   + " routes.stopID = stops.id WHERE routesdetails.stopID = @StopID AND routesdetails.lineID = @LineID AND"
+                   + " routesdetails.routeID = @RouteID";
 
         public SearchLogic() { }
 
@@ -30,7 +30,8 @@ namespace wROJAServer.logic
             {
                 List<RouteOptions> result = new List<RouteOptions>();
 
-                SQLiteCommand query = new SQLiteCommand(String.Format(LinesQueryString, startStopID), databaseConnection);
+                SQLiteCommand query = new SQLiteCommand(LinesQueryString, databaseConnection);
+                query.Parameters.Add(new SQLiteParameter("@StopID", startStopID));
                 SQLiteDataReader linesReader = query.ExecuteReader();
 
                 int ID;
@@ -45,6 +46,9 @@ namespace wROJAServer.logic
                     routeID = linesReader.GetInt32(2);
 
                     SQLiteCommand crsQuery = new SQLiteCommand(String.Format(CRSCheckRoute, endStopID, lineID, routeID), databaseConnection);
+                    query.Parameters.Add(new SQLiteParameter("@StopID", endStopID));
+                    query.Parameters.Add(new SQLiteParameter("@LineID", lineID));
+                    query.Parameters.Add(new SQLiteParameter("@RouteID", routeID));
                     SQLiteDataReader CRSReader = crsQuery.ExecuteReader();
 
                     if (CRSReader.Read())
@@ -73,7 +77,9 @@ namespace wROJAServer.logic
 
         private string GetLineAndStopNames(int routeID, int lineID)
         {
-            SQLiteCommand query = new SQLiteCommand(String.Format(GetLineAndStopNamesQueryString, routeID, lineID), databaseConnection);
+            SQLiteCommand query = new SQLiteCommand(GetLineAndStopNamesQueryString, databaseConnection);
+            query.Parameters.Add(new SQLiteParameter("@ID", routeID));
+            query.Parameters.Add(new SQLiteParameter("@LineID", lineID));
             SQLiteDataReader reader = query.ExecuteReader();
 
             if (reader.Read())
@@ -86,7 +92,10 @@ namespace wROJAServer.logic
 
         private int GetRouteDetailsID(int lineID, int routeID, int startStopID)
         {
-            SQLiteCommand query = new SQLiteCommand(String.Format(GetRouteDetailsIDQueryString, lineID, routeID, startStopID), databaseConnection);
+            SQLiteCommand query = new SQLiteCommand(GetRouteDetailsIDQueryString, databaseConnection);
+            query.Parameters.Add(new SQLiteParameter("@LineID", lineID));
+            query.Parameters.Add(new SQLiteParameter("@RouteID", routeID));
+            query.Parameters.Add(new SQLiteParameter("@StopID", startStopID));
             return Convert.ToInt32((Int64)query.ExecuteScalar());
         }
     }
