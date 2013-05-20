@@ -18,12 +18,12 @@
     
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="200"/>
-            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="300"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <StackPanel Margin="10,5,5,5">
-            <GroupBox Header="GroupBox">
+            <GroupBox Header="Wyszukiwanie">
                 <StackPanel>
                     <Label Content="Przystanek początkowy:" Margin="0,5,5,0" />
                     <ComboBox x:Name="StartStopCB" ItemTemplate="{DynamicResource stopsMainBoxTemplate}" TextSearch.TextPath="Name" Margin="5,0,5,5" StaysOpenOnEdit="True" IsEditable="True" />
