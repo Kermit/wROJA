@@ -20,9 +20,6 @@ namespace wROJAServer.logic
                         + " FROM routesdetails LEFT JOIN stops ON routesdetails.stopID = stops.id WHERE routesdetails.lineID = @LineID" 
                         + " AND routesdetails.routeID = @RouteID AND routesdetails.stopID != -1 ORDER BY routeDetailsID";
 
-        private static string GetTimetableForStopString = "SELECT days.name AS dayName, times.time AS timeTable, times.legend AS timetableLegend"
-                        + " FROM times LEFT JOIN days ON times.dayID = days.id WHERE times.routeDetailsID = {0}";
-
         public LinesLogic() {}
 
         public List<Line> GetAllLines()

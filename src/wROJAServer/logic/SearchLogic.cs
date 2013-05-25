@@ -45,10 +45,10 @@ namespace wROJAServer.logic
                     lineID = linesReader.GetInt32(1);
                     routeID = linesReader.GetInt32(2);
 
-                    SQLiteCommand crsQuery = new SQLiteCommand(String.Format(CRSCheckRoute, endStopID, lineID, routeID), databaseConnection);
-                    query.Parameters.Add(new SQLiteParameter("@StopID", endStopID));
-                    query.Parameters.Add(new SQLiteParameter("@LineID", lineID));
-                    query.Parameters.Add(new SQLiteParameter("@RouteID", routeID));
+                    SQLiteCommand crsQuery = new SQLiteCommand(CRSCheckRoute, databaseConnection);
+                    crsQuery.Parameters.Add(new SQLiteParameter("@StopID", endStopID));
+                    crsQuery.Parameters.Add(new SQLiteParameter("@LineID", lineID));
+                    crsQuery.Parameters.Add(new SQLiteParameter("@RouteID", routeID));
                     SQLiteDataReader CRSReader = crsQuery.ExecuteReader();
 
                     if (CRSReader.Read())

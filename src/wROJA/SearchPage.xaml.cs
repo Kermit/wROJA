@@ -52,7 +52,8 @@ namespace wROJA
             StopsService.Stop StartStop = (StopsService.Stop)StartStopCB.SelectedItem;
             StopsService.Stop EndStop = (StopsService.Stop)EndStopCB.SelectedItem;
 
-            if (!string.IsNullOrEmpty(StartStop.Name) && !string.IsNullOrEmpty(EndStop.Name))
+            if (StartStop != null && EndStop != null &&
+                !string.IsNullOrEmpty(StartStop.Name) && !string.IsNullOrEmpty(EndStop.Name))
             {
                 if (StartStop.Name == EndStop.Name)
                 {                    
